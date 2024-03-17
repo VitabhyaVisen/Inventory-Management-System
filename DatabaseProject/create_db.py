@@ -1,0 +1,17 @@
+import sqlite3
+def emp_db():
+    con = sqlite3.connect(database='DatabaseProject.db')
+    cur = con.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS employee(eid INTEGER PRIMARY KEY AUTOINCREMENT,name text, email text, gender text, contact text, dob text, doj text, pass text, utype text, address text, salary text)")
+    con.commit()
+    
+    cur.execute("CREATE TABLE IF NOT EXISTS supplier(invoice INTEGER PRIMARY KEY AUTOINCREMENT,name text, contact text, desc text)")
+    con.commit()
+
+    cur.execute("CREATE TABLE IF NOT EXISTS category(cid INTEGER PRIMARY KEY AUTOINCREMENT,name text)")
+    con.commit()
+
+    cur.execute("CREATE TABLE IF NOT EXISTS product(pid INTEGER PRIMARY KEY AUTOINCREMENT, Category text, Supplier text, name text, price  REAL, qty INTEGER, status text)")
+    con.commit()
+
+emp_db()
